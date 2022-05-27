@@ -79,7 +79,7 @@ def _preprocess_data(data):
     feature_vector_df['Hour'] = feature_vector_df['time'].astype('datetime64').dt.hour
 
     # Dropping unnecassary columns
-    predict_vector = feature_vector_df.drop(columns=['Unnamed: 0','time', 'load_shortfall_3h'])
+    predict_vector = feature_vector_df.drop(columns=['Unnamed: 0','time'])
     
     # ------------------------------------------------------------------------
 
