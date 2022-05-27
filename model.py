@@ -75,7 +75,6 @@ def _preprocess_data(data):
     # Splitting the time feature into smaller sub-features
     feature_vector_df['Year'] = feature_vector_df['time'].astype('datetime64').dt.year
     feature_vector_df['Month'] = feature_vector_df['time'].astype('datetime64').dt.month
-    feature_vector_df['Week'] = feature_vector_df['time'].astype('datetime64').dt.isocalendar().week
     feature_vector_df['Day'] = feature_vector_df['time'].astype('datetime64').dt.day
     feature_vector_df['Hour'] = feature_vector_df['time'].astype('datetime64').dt.hour
 
