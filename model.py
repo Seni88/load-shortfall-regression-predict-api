@@ -60,7 +60,8 @@ def _preprocess_data(data):
     # ----------- Replace this code with your own preprocessing steps --------
 
     # Imputing missing values with the Median
-    feature_vector_df['Valencia_pressure'].fillna(feature_vector_df['Valencia_pressure'].median(), inplace = True)
+    Valencia_pressure_Median = feature_vector_df['Valencia_pressure'].median()
+    feature_vector_df['Valencia_pressure'].fillna(Valencia_pressure_Median, inplace = True)
 
     # Converting our 'Valencia_wind_deg' and 'Seville_pressure' features from categorical data types to numerical data types
     # The first step is to strip away the string characters from the values
@@ -78,8 +79,11 @@ def _preprocess_data(data):
     feature_vector_df['Day'] = feature_vector_df['time'].astype('datetime64').dt.day
     feature_vector_df['Hour'] = feature_vector_df['time'].astype('datetime64').dt.hour
 
+    # Dropping unwanted columns
+    feature_vector_df = feature_vector_df.drop(columns=['Unnamed: 0','time'])
+
     # Dropping unnecassary columns
-    predict_vector = feature_vector_df.drop(columns=['Unnamed: 0','time'])
+    predict_vector = feature_vector_df
     
     # ------------------------------------------------------------------------
 
